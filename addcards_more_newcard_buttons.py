@@ -45,7 +45,7 @@ Support: None. Use at your own risk. If you do find a problem please email me
 
 Setup data
 List of dicts, where each item of the list (a dict) is the data for a new button.
-This can be edited to suit, but there can not be more than 5 buttons.
+This can be edited to suit, but there can not be more than 4 buttons.
     Description ... appears above the button
     Label ... the label of the button
     ShortCut ... the shortcut key for the button

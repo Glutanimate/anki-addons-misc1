@@ -103,6 +103,8 @@ Adds anywhere between 1 to 4 new buttons to the review window when reviewing a n
 
 By default 3 buttons are added, with intervals: "3-4d" , "5-7d" , "8-15d". This can be changed in the source code.
 
+![screenshot](https://raw.githubusercontent.com/Glutanimate/anki-addons-misc1/master/screenshots/addcards_more_newcard_buttons.png)
+
 I wanted this addon because many of my new cards do not need to be "Learned" as I created and added them myself, typically an hour or so before my first review session. I often add around 100-200 new cards per day, all on a related topic, and this addon allows me to spread the next review of the new cards that don't need learning out in time.
 
 **How it works**
@@ -118,7 +120,7 @@ In summary, this functions as if you click the "Easy" button on a new card, and 
 
 **Configuration**
 
-Open the add-on in a text editor of your choice and find the `extra_buttons` section below the header. This is a list of dicts, where each item of the list (a dict) is the data for a new button. This can be edited to suit, but **there can not be more than 5 buttons**. Values:
+Open the add-on in a text editor of your choice and find the `extra_buttons` section below the header. This is a list of dicts, where each item of the list (a dict) is the data for a new button. This can be edited to suit, but **there can not be more than 4 buttons**. Values:
 
 - Description ... appears above the button
 - Label ... the label of the button
