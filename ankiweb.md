@@ -27,7 +27,7 @@ Uploaded by Glutanimate ([https://github.com/Glutanimate/anki-addons-misc1](http
 
 # main_deck_tooltip.py
 
-## Deck Overview Tooltip
+## Deck Overview Stats Tooltip
 
 **Shows a tooltip on the main window deck browser page**
 
@@ -53,7 +53,7 @@ Modified und reuploaded by Glutanimate, 2016
 
 # browser_open_added_today.py
 
-## Open Added Today from Reviewer
+## Open 'Added Today' from Reviewer
 
 **Overview**
 
