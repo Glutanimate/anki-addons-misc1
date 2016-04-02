@@ -8,6 +8,8 @@ Adds a menu item into the "History" menu of the "Add" notes dialog that
 Copyright: Steve AW <steveawa@gmail.com>
 License: GNU GPL, version 3 or later; http://www.gnu.org/copyleft/gpl.html
 
+Modified by Glutanimate, 2016
+
 Support: Use at your own risk. If you do find a problem please email me
 or use one the following forums, however there are certain periods
 throughout the year when I will not have time to do any work on
@@ -27,16 +29,6 @@ from aqt.qt import *
 from aqt.addcards import AddCards
 from anki.hooks import wrap, runHook, addHook
 import aqt
-
-
-def onHistory(self):
-    m = QMenu(self)
-    for nid, txt in self.history:
-        a = m.addAction(_("Edit %s") % txt)
-        a.connect(a, SIGNAL("triggered()"),
-                  lambda nid=nid: self.editHistory(nid))
-    runHook("AddCards.onHistory", self, m)
-    m.exec_(self.historyButton.mapToGlobal(QPoint(0, 0)))
 
 
 def insert_open_browser_action(self, m):
@@ -59,14 +51,6 @@ def show_browser_on_added_today(self):
 def mySetupButtons(self):
     self.historyButton.setEnabled(True)
 
-# from distutils.version import LooseVersion
-# if LooseVersion (aqt.appVersion) < LooseVersion ("2.0.12"):
-def versiontuple(v):
-    #http://stackoverflow.com/questions/11887762/how-to-compare-version-style-strings
-    return tuple(map(int, (v.split("."))))
-
-if versiontuple (aqt.appVersion) < versiontuple ("2.0.12"):
-    AddCards.onHistory = onHistory
 AddCards.showBrowserOnAddedToday = show_browser_on_added_today
 AddCards.setupButtons = wrap(AddCards.setupButtons, mySetupButtons, "after")
 addHook("AddCards.onHistory", insert_open_browser_action)
