@@ -1,3 +1,9 @@
+## Overview
+
+This is a personal fork of Steve AW's Anki add-ons. While most of these haven't been updated in years they are still functional and only need an adjustment or two before being ready to be reuploaded to AnkiWeb.
+
+## Original README:
+
 A selection of [Anki](http://ankisrs.net/) [addons](https://ankiweb.net/shared/addons/) in various stages of development.
 They are not suitable for general use, and could easily damage your Anki installation/database etc.
 For addons suitable for end users, please go to: https://ankiweb.net/shared/addons/
