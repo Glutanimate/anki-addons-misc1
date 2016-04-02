@@ -61,6 +61,7 @@ assert len(extra_buttons) <= 4
 
 from aqt.reviewer import Reviewer
 from anki.hooks import wrap
+from aqt.utils import tooltip
 
 #Anki uses a single digit to track which button has been clicked.
 #We will use 6 and above to track the extra buttons.
@@ -119,6 +120,7 @@ def answer_card_intercepting(self, actual_ease, _old):
         buttonItem = extra_buttons[actual_ease - INTERCEPT_EASE_BASE]
         #Do the reschedule.
         self.mw.col.sched.reschedCards([prev_card_id], buttonItem["ReschedMin"], buttonItem["ReschedMax"])
+        tooltip("<center>Rescheduled:" + "<br>" + buttonItem["Description"] + "</center>")
     return ret
 
 #Handle the shortcut. Used changekeys.py addon as a guide     
