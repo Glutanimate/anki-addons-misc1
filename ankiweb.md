@@ -50,3 +50,39 @@ https://github.com/goldfire/minitip
 
 Modified und reuploaded by Glutanimate, 2016 
 ([https://github.com/Glutanimate/anki-addons-misc1](https://github.com/Glutanimate/anki-addons-misc1))
+
+# browser_open_added_today.py
+
+## Open Added Today from Reviewer
+
+**Overview**
+
+Adds a menu item into the "History" menu of the "Add" notes dialog that opens a Browser on the 'Added Today' view with the cards ordered by their creation time.
+
+**Credits**
+
+Copyright: Steve AW ([https://github.com/steveaw/anki_addons](https://github.com/steveaw/anki_addons))
+License: GNU GPL, version 3 or later; http://www.gnu.org/copyleft/gpl.html
+
+Support: Use at your own risk.
+
+Modified und reuploaded by Glutanimate, 2016 
+([https://github.com/Glutanimate/anki-addons-misc1](https://github.com/Glutanimate/anki-addons-misc1))
+
+# browse_card_creation
+
+## Browse Card Creation
+
+**Browse Card in its Creation Context**
+
+Adds commands to the Reviewer "More" menu and a hotkey (*C*) to open the browser on the selected card. The browser is configured to sort based on creation date, and select the card. Enables the card to be viewed in its  "creation context" ie notes that were created before/after in the same deck.
+
+**Credits**
+
+Copyright: Steve AW ([https://github.com/steveaw/anki_addons](https://github.com/steveaw/anki_addons))
+License: GNU GPL, version 3 or later; http://www.gnu.org/copyleft/gpl.html
+
+Support: Use at your own risk.
+
+Modified und reuploaded by Glutanimate, 2016 
+([https://github.com/Glutanimate/anki-addons-misc1](https://github.com/Glutanimate/anki-addons-misc1))
