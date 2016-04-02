@@ -8,6 +8,8 @@ also shows the review log table (as does the Browser "info" command)
 Copyright: Steve AW <steveawa@gmail.com>
 License: GNU GPL, version 3 or later; http://www.gnu.org/copyleft/gpl.html
 
+Modified by Glutanimate, 2016
+
 Support: Use at your own risk. If you do find a problem please email me
 or use one the following forums, however there are certain periods
 throughout the year when I will not have time to do any work on
@@ -21,7 +23,7 @@ import time
 from PyQt4.QtCore import SIGNAL, SLOT, Qt
 from PyQt4.QtGui import QDialog, QVBoxLayout, QDialogButtonBox, QCursor, QKeySequence, QMenu, QApplication
 import datetime
-from anki.hooks import addHook, runHook
+from anki.hooks import addHook, runHook, wrap
 from anki.lang import _
 from anki.utils import fmtTimeSpan
 import aqt
@@ -152,49 +154,19 @@ def showinfo_last_card(self):
 def insert_reviewer_more_action(self, m):
     #self is Reviewer
     a = m.addAction('Show Info For This Card')
+    a.setShortcut(QKeySequence("i"))
     a.connect(a, SIGNAL("triggered()"),
               lambda s=self: showinfo_this_card(s))
     a = m.addAction('Show Info For Last Card')
     a.connect(a, SIGNAL("triggered()"),
               lambda s=self: showinfo_last_card(s))
 
-########################################################3
-#Only change is to add hook
-#The hook is now in the main anki code base
-#This is now only used  in versions prior to 2.0.12
-def showContextMenu(self):
-    opts = [
-        [_("Mark Note"), "*", self.onMark],
-        [_("Bury Note"), "-", self.onBuryNote],
-        [_("Suspend Card"), "@", self.onSuspendCard],
-        [_("Suspend Note"), "!", self.onSuspend],
-        [_("Delete Note"), "Delete", self.onDelete],
-        [_("Options"), "O", self.onOptions],
-        None,
-        [_("Replay Audio"), "R", self.replayAudio],
-        [_("Record Own Voice"), "Shift+V", self.onRecordVoice],
-        [_("Replay Own Voice"), "V", self.onReplayRecorded],
-    ]
-    m = QMenu(self.mw)
-    for row in opts:
-        if not row:
-            m.addSeparator()
-            continue
-        label, scut, func = row
-        a = m.addAction(label)
-        a.setShortcut(QKeySequence(scut))
-        a.connect(a, SIGNAL("triggered()"), func)
-        #Only change is the following statement
-    runHook("Reviewer.contextMenuEvent", self, m)
-    m.exec_(QCursor.pos())
+def keyHandler(self, evt, _old):
+    key = unicode(evt.text())
+    if key == "i":
+        showinfo_this_card(self)
+    else:
+        return _old(self, evt)
 
-
-# from distutils.version import LooseVersion
-# if LooseVersion (aqt.appVersion) < LooseVersion ("2.0.12"):
-def versiontuple(v):
-    #http://stackoverflow.com/questions/11887762/how-to-compare-version-style-strings
-    return tuple(map(int, (v.split("."))))
-
-if versiontuple (aqt.appVersion) < versiontuple ("2.0.12"):
-    Reviewer.showContextMenu = showContextMenu
 addHook("Reviewer.contextMenuEvent", insert_reviewer_more_action)
+Reviewer._keyHandler = wrap(Reviewer._keyHandler, keyHandler, "around")
