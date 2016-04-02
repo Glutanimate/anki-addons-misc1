@@ -6,6 +6,8 @@ https://ankiweb.net/shared/info/468253198
 Copyright: Steve AW <steveawa@gmail.com>
 License: GNU GPL, version 3 or later; http://www.gnu.org/copyleft/gpl.html
 
+Modified by Glutanimate, 2016
+
 WARNING: this addon uses private methods to achieve its goals. Use at your
     own risk and keep backups.
 
@@ -54,10 +56,6 @@ extra_buttons = [{"Description": "3-4d", "Label": "3-4", "ShortCut": "5", "Resch
                  {"Description": "5-7d", "Label": "5-7", "ShortCut": "6", "ReschedMin": 5, "ReschedMax": 7},
                  {"Description": "8-15d", "Label": "8-15", "ShortCut": "7", "ReschedMin": 8, "ReschedMax": 15}]
 
-extra_buttons = [{"Description": "k:5", "Label": "3-4", "ShortCut": "5", "ReschedMin": 3, "ReschedMax": 5},
-                 {"Description": "k:6", "Label": "5-7", "ShortCut": "6", "ReschedMin": 5, "ReschedMax": 7},
-                 {"Description": "k:7", "Label": "8-15", "ShortCut": "7", "ReschedMin": 8, "ReschedMax": 15},
-                 {"Description": "k:na", "Label": "1N", "ShortCut": "", "ReschedMin": 1, "ReschedMax": 1}]
 #Must be four or less
 assert len(extra_buttons) <= 4
 
