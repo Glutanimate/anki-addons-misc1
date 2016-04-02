@@ -7,6 +7,8 @@ https://ankiweb.net/shared/info/1819828168
 Copyright: Steve AW <steveawa@gmail.com>
 License: GNU GPL, version 3 or later; http://www.gnu.org/copyleft/gpl.html
 
+Modified by Glutanimate, 2016
+
 Makes use of MiniTip (Dual licensed under the MIT and GPL licenses)
 http://goldfirestudios.com/blog/81/miniTip-jQuery-Plugin
 https://github.com/goldfire/minitip
@@ -67,7 +69,7 @@ def _generate_jquery_scripts():
     tip_script = "    $(function(){"
     template = """
     $('tr#%(id)s a').miniTip({
-        content: 'Loading...', offset: 1, delay: 200, maxW: '500px',
+        content: 'Loading...', offset: 1, delay: 500, maxW: '500px',
 		render: function(tt) {
         $('#miniTip_c').html(py_deck_inf.deck_information_for(%(id)s) );}});
         """
