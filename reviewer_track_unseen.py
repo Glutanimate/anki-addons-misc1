@@ -125,6 +125,7 @@ def setup_browser_menu(browser):
 addHook("browser.setupMenus", setup_browser_menu)
 Reviewer._answerCard = wrap(Reviewer._answerCard, answer_card_removing_unseen_tags, "before")
 Reviewer._showQuestion = wrap(Reviewer._showQuestion, change_background_color, "after")
+# have to call this again on the answer side because of JS Booster add-on
 Reviewer._showAnswer = wrap(Reviewer._showAnswer, change_background_color, "after")
 
 Reviewer.nextCard = wrap(Reviewer.nextCard, wipe_background_for_nextCard, "before")
