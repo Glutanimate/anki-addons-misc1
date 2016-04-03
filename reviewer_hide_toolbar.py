@@ -49,5 +49,5 @@ toolbar_menu = QMenu("Tool&bar")
 action = mw.menuBar().insertMenu(mw.form.menuTools.menuAction(), toolbar_menu)
 #Not really the intended purpose of link_handlers, but good enough
 for key, value in iter(sorted(mw.toolbar.link_handlers.items())):
-    a = toolbar_menu.addAction(key.title())
+    a = toolbar_menu.addAction(_(key.title()))
     a.connect(a, SIGNAL("triggered()"), value)
