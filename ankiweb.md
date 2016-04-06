@@ -14,6 +14,10 @@ The toolbar is made visible again when viewing decks and the overview.
 The commands that are usually found on the toolbar are added to a new
 main window "Toolbar" menu. Shortcut keys should continue to function.
 
+**Changes**
+
+2016-04-03: use internationalization for toolbar items (thanks to comment below)
+
 **Credits**
 
 Reupload of reviewer_hide_toolbar.
