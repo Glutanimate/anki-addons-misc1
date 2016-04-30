@@ -28,6 +28,7 @@ from PyQt4.QtGui import QKeySequence
 from anki.hooks import addHook, wrap
 from anki.sched import Scheduler
 from aqt.reviewer import Reviewer
+from aqt.utils import tooltip
 
 
 __author__ = 'Steve'
@@ -47,18 +48,23 @@ def add_unseen_tags_to_selected(self):
         unseen_note.flush()
     self.model.endReset()
     self.mw.requireReset()
+    tooltip("Added " + unseen_tag + " to notes")
     #self.mw.progress.finish()
 
 
 def remove_unseen_tags_from_selected(self):
     #self is browser
-    #There is a chance this will miss some if card numbers have changed
     selected_cids = self.selectedCards()
+    self.mw.checkpoint("Remove Unseen Tags")
+    self.model.beginReset()
     for cid in selected_cids:
         unseen_card = self.col.getCard(cid)
         unseen_note = unseen_card.note()
         unseen_note.delTag(unseen_tag)
         unseen_note.flush()
+    self.model.endReset()
+    self.mw.requireReset()
+    tooltip("Removed " + unseen_tag + " from notes")
 
 
 def change_background_color(self):
@@ -109,17 +115,22 @@ def show_all_unseen_cards(self):
     self.onSearch()
 
 
-def setup_browser_menu(browser):
-    unseen_menu = browser.form.menuEdit.addMenu("Unseen Card Tracking")
+def setup_browser_menu(self):
+    #self is browser
+    if not self.menuTags:
+        self.menuTags = QMenu(_("&Tags"))
+        action = self.menuBar().insertMenu(self.mw.form.menuTools.menuAction(), self.menuTags)
+    self.menuTags.addSeparator()
+    unseen_menu = self.menuTags.addMenu("Unseen Card Tracking")
     a = unseen_menu.addAction('Add "Unseen" Tags to Selected Cards')
     a.setShortcut(QKeySequence("Ctrl+U"))
-    browser.connect(a, SIGNAL("triggered()"), lambda b=browser: add_unseen_tags_to_selected(b))
+    self.connect(a, SIGNAL("triggered()"), lambda b=self: add_unseen_tags_to_selected(b))
     a = unseen_menu.addAction('Remove "Unseen" Tags from Selected Cards')
     a.setShortcut(QKeySequence("Ctrl+Shift+U"))
-    browser.connect(a, SIGNAL("triggered()"), lambda b=browser: remove_unseen_tags_from_selected(b))
+    self.connect(a, SIGNAL("triggered()"), lambda b=self: remove_unseen_tags_from_selected(b))
     a = unseen_menu.addAction('Show all Unseen Cards')
     a.setShortcut(QKeySequence("Ctrl+Alt+U"))
-    browser.connect(a, SIGNAL("triggered()"), lambda b=browser: show_all_unseen_cards(b))
+    self.connect(a, SIGNAL("triggered()"), lambda b=self: show_all_unseen_cards(b))
 
 #todo: menu action to set search string to show all
 addHook("browser.setupMenus", setup_browser_menu)
