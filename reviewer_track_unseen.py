@@ -125,11 +125,15 @@ def show_all_unseen_cards(self):
 
 def setup_browser_menu(self):
     #self is browser
-    if not self.menuTags:
+    try:
+        # used by multiple add-ons, so we check for its existence first
+        menu = self.menuTags
+    except:
         self.menuTags = QMenu(_("&Tags"))
         action = self.menuBar().insertMenu(self.mw.form.menuTools.menuAction(), self.menuTags)
-    self.menuTags.addSeparator()
-    unseen_menu = self.menuTags.addMenu("Unseen Card Tracking")
+    menu = self.menuTags
+    menu.addSeparator()
+    unseen_menu = menu.addMenu("Unseen Card Tracking")
     a = unseen_menu.addAction('Add "Unseen" Tags to Selected Cards')
     a.setShortcut(QKeySequence("Ctrl+U"))
     self.connect(a, SIGNAL("triggered()"), lambda b=self: add_unseen_tags_to_selected(b))
