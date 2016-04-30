@@ -38,7 +38,10 @@ unseen_tag = "_special::unseen"
 def add_unseen_tags_to_selected(self):
     #self is browser
     selected_cids = self.selectedCards()
-    #self.mw.progress.start()
+    if not selected_cids:
+        tooltip(_("No cards selected."), period=2000)
+        return
+    self.mw.progress.start()
     self.mw.checkpoint("Add Unseen Tags")
     self.model.beginReset()
     for cid in selected_cids:
@@ -48,13 +51,17 @@ def add_unseen_tags_to_selected(self):
         unseen_note.flush()
     self.model.endReset()
     self.mw.requireReset()
+    self.mw.progress.finish()
     tooltip("Added " + unseen_tag + " to notes")
-    #self.mw.progress.finish()
 
 
 def remove_unseen_tags_from_selected(self):
     #self is browser
     selected_cids = self.selectedCards()
+    if not selected_cids:
+        tooltip(_("No cards selected."), period=2000)
+        return
+    self.mw.progress.start()
     self.mw.checkpoint("Remove Unseen Tags")
     self.model.beginReset()
     for cid in selected_cids:
@@ -64,6 +71,7 @@ def remove_unseen_tags_from_selected(self):
         unseen_note.flush()
     self.model.endReset()
     self.mw.requireReset()
+    self.mw.progress.finish()
     tooltip("Removed " + unseen_tag + " from notes")
 
 
