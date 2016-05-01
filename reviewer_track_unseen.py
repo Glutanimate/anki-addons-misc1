@@ -33,7 +33,7 @@ from aqt.utils import tooltip
 
 __author__ = 'Steve'
 
-unseen_tag = "_special::unseen"
+unseen_tag = ".unseen"
 
 def add_unseen_tags_to_selected(self):
     #self is browser
