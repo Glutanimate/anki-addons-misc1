@@ -87,7 +87,7 @@ def _answerButtons(self):
         buf += but(ease, label)
         #swAdded start ====>
     #Only for cards in the new queue
-    if self.card.type == 0:
+    if self.card.type in (0, 1, 3): # New, Learn, Day learning
         #Check that the number of answer buttons is as expected.
         assert self.mw.col.sched.answerButtons(self.card) == 3
         #python lists are 0 based
