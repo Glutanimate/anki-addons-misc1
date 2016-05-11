@@ -97,13 +97,13 @@ Modified und reuploaded by Glutanimate, 2016
 
 **Overview**
 
-Adds extra buttons to the Reviewer window for new cards.
+Adds extra buttons to the Reviewer window for new cards and cards in learning.
 
 **WARNING**: this addon uses custom methods to achieve its goals. Use at your own risk and keep backups.
 
 **What it does**
 
-Adds anywhere between 1 to 4 new buttons to the review window when reviewing a new card. The new buttons function like the exist Easy" button, but in addition, they reschedule the card to differ nterval, which is randomly assigned between a lower and upper limit that is preset by the user (see below).
+Adds anywhere between 1 to 4 new buttons to the review window when reviewing a new card or cards that are in learning mode. The new buttons function like the exist Easy" button, but in addition, they reschedule the card to differ nterval, which is randomly assigned between a lower and upper limit that is preset by the user (see below).
 
 By default 3 buttons are added, with intervals: "3-4d" , "5-7d" , "8-15d". This can be changed in the source code.
 
@@ -115,7 +115,7 @@ I wanted this addon because many of my new cards do not need to be "Learned" as 
 
 This addon works by intercepting the creation of the reviewer buttons and adds up to 4 extra buttons to the review window. The answer function is wrapped and the ease parameter is checked to see if it one of the new buttons. If it is, the standard answer function is used to add the card as an easy card, and then the browser 'reschedCards' function is used to reschedule it to the desired interval.
 
-In summary, this functions as if you click the "Easy" button on a new card, and then go to the browser and reschedule the card.
+In summary, this functions as if you click the "Easy" button on a new card, and then go to the browser and reschedule the card. This means that, in contrast to rescheduling the card, using one of the new answer keys will actually add a new entry to the card review history.
 
 **Warning**
 
@@ -131,6 +131,11 @@ Open the add-on in a text editor of your choice and find the `extra_buttons` sec
 - ShortCut ... the shortcut key for the button
 - ReschedMin ... same as the lower number in the Browser's "Edit/Reschedule" command
 - ReschedMax ... same as the higher number in the Browser's "Edit/Reschedule" command
+
+**Changes**
+
+2016-05-11: made answer buttons work properly when card is in learning mode (thanks to @ankitest)
+2016-05-10: extend answer buttons to cards in learning (thanks to @ankitest)
 
 **Credits**
 
