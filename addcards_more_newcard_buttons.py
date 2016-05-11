@@ -104,7 +104,7 @@ def _answerButtons(self):
 #This wraps existing Reviewer._answerCard function.    
 def answer_card_intercepting(self, actual_ease, _old):
     ease = actual_ease
-    was_new_card = self.card.type == 0
+    was_new_card = self.card.type in (0, 1, 3)
     is_extra_button = was_new_card and actual_ease >= INTERCEPT_EASE_BASE
     if is_extra_button:
         #Make sure this is as expected.
