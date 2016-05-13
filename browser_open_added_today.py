@@ -33,7 +33,7 @@ import aqt
 
 def insert_open_browser_action(self, m):
     m.addSeparator()
-    a = m.addAction("Open Browser on 'Added Today'")
+    a = m.addAction("Open Browser on 'Added &Today'")
     a.connect(a, SIGNAL("triggered()"),
               lambda self=self: show_browser_on_added_today(self))
 
