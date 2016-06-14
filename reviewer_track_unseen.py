@@ -24,7 +24,7 @@ I will see how it goes this semester, but I think it is going to finally give me
 way to systematically cram.
 """
 from PyQt4.QtCore import SIGNAL
-from PyQt4.QtGui import QKeySequence
+from PyQt4.QtGui import QMenu, QKeySequence
 from anki.hooks import addHook, wrap
 from anki.sched import Scheduler
 from aqt.reviewer import Reviewer
